@@ -1,0 +1,112 @@
+//Create an HTML form that contain the Student Registration details and write a
+//JavaScript to validate Student first and last name as it should not contain other than
+//alphabets and age should be between 18 to 50
+
+
+<!doctype html>
+<html>
+<head>
+<title> student form validation</title>
+<script> function
+printError(elemId,hintMsg)
+{
+document.getElementById(elemId).innerHTML=hintMsg;
+}
+function validateForm()
+{
+var
+fname=document.registration.fname.value;
+var lname=document.registration.lname.value;
+var age=document.registration.age.value; var
+mob=document.registration.mob.value; var
+email=document.registration.email.value;
+var fnameerr=lnameerr=ageerr=moberr=true;
+if(age < 18 || age >50)
+{
+printError("ageerr","Please Enter age between 18 to 50");
+}
+else
+{
+printError("ageerr","")
+; ageerr=false;
+}
+if(fname == "")
+{
+printError("fnameerr","Please Enter your name");
+}
+else
+{
+var regex= /^[a-zA-Z\s]+$/;
+if(regex.test(fname) ===false)
+{
+printError("fnameerr","Please Enter valid name");
+}
+else
+{
+printError("fnameerr","")
+; fnameErr=false;
+}
+}
+if(lname == "")
+{
+printError("lnameerr","Please Enter your name");
+}
+else
+{
+var regex= /^[a-zA-Z\s]+$/;
+if(regex.test(lname) ===false)
+{
+printError("lnameerr","Please Enter valid name");
+}
+else
+{
+printError("lnameerr","")
+; lnameErr=false;
+}
+} if((fnameerr || lnameerr || ageerr) ==
+true)
+{ return false;
+}
+else
+{
+var datapreview="you have entered the following details\n"+"First Name"+ fname +"\n"+"Last
+Name"+ lname+"\n"+"Age"+ age+"\n";
+alert(datapreview);
+}
+};
+</script>
+</head>
+<body>
+<form name="registration" onsubmit="return validateForm()" action="hi.html" method="post">
+<h2>Registration Form</h2>
+<div class="row">
+<label>First Name</label>
+<input type="text" name="fname">
+<div class="error" id="fnameerr"></div>
+</div>
+<div class="row">
+<label>Last Name</label>
+<input type="text" name="lname">
+<div class="error" id="lnameerr"></div>
+</div>
+<div class="row">
+<label>Age</label>
+<input type="text" name="age">
+<div class="error" id="ageerr"></div>
+</div>
+<div class="row">
+<label>Mobile Number</label>
+<input type="text" name="mob">
+<div class="error" id="moberr"></div>
+</div>
+<div class="row">
+<label>Email</label>
+<input type="text" name="email">
+<div class="error" id="emailerr"></div>
+</div>
+<div class="row">
+<input type="submit" value="submit">
+</div>
+</form>
+</body>
+</html>
